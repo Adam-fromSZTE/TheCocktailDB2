@@ -6,7 +6,7 @@ const route = require('../backend/routes/drink.route');
   
 const app = express();
 app.use(cors());
-app.use('/', route)
+app.use('/api', route)
   
 // PORT
 const port = process.env.PORT || 4000;
