@@ -6,8 +6,9 @@ const SearchDrink = () => {
    const [text, setText] = useState();
    const [drinkList, setDrinkList] = useState();
 
-   const handleClick = () => {
-      ApiService.searchDrink(text).then(res => setDrinkList(res.data));
+   const handleClick = async() => {
+      const res  = await ApiService.searchDrink(text);
+      setDrinkList(res.data)
    };
 
    useEffect(() => {

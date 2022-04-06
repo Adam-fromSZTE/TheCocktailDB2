@@ -21,15 +21,15 @@ const Cocktail = (props) => {
                   }
             </tbody>
          </table> 
-         <div className='w-2/3 h-72 float-right bg-red-200'>
-            <div className="w-1/2 float-left p-10">
+         <div className='w-2/3 h-auto float-right bg-red-200'>
+            <div className="w-1/2 h-auto float-left p-10">
                {drink.strInstructions}
             </div>
             <div className="w-1/2 float-right">
             <img 
                src={drink.strDrinkThumb} 
                alt='drink'
-               className="w-80 h-80 float-right mr-20"
+               className="w-1/2 h-1/2 float-right mr-20"
                />
             </div>   
          </div>

@@ -14,13 +14,14 @@ const RandomDrink = (props) => {
 
 
    //Handle button click, call the ApiService.randomDrink and set the data for the variable
-   const handleClick = () => {
-      ApiService.randomDrink().then(res => setRandomDrink(res.data));
+   const handleClick = async() => {
+      const res = await ApiService.randomDrink();
+      setRandomDrink(res.data);
    }
 
    return ( 
          randomDrink && 
-         <div className="bg-green-200">                       
+         <div className="bg-green-200 h-auto">                       
             <Cocktail drink={randomDrink} />
             <button className='bg-blue-200' onClick={() => handleClick()}>Click me</button>
          </div>
