@@ -11,6 +11,8 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Table, TableBody, TableCell, TableRow } from '@mui/material';
 
+
+//This is a MUI component
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
   return <IconButton {...other} />;
@@ -59,7 +61,7 @@ export default function CompTemp(props) {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Typography paragraph>Hozzávalók:</Typography>
+          <Typography paragraph>Ingrediens:</Typography>
           
             <Table>
                 <TableBody>

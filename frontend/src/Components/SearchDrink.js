@@ -1,23 +1,21 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ApiService from "../Service/api"
 import TextField from "@mui/material/TextField"
-import CompTemp from "./CompTemp";
-import { Button, Card, Grid, Checkbox } from "@mui/material";
+import CompTemp from "./Cocktail";
+import { Button, Card, Grid } from "@mui/material";
 
 
 const SearchDrink = (props) => {
    const [text, setText] = useState();
    const [drinkList, setDrinkList] = useState();
 
+   //Handle button click (async)
    const handleClick = async() => {
       const res  = await ApiService.searchDrink(text);
       setDrinkList(res.data)
    };
-
-   useEffect(() => {
-      console.log(drinkList)
-   } , [drinkList])
    
+   //I give in props a drink to the Cocktail component
    return ( 
       <div className="items-center">
          <div className="mb-20">

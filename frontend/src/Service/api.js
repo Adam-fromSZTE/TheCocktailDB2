@@ -2,14 +2,17 @@ import axios from 'axios';
 import SERVER_URL from '../Service/serverUrl'
 
 class ApiService {
+  //Api which make a get to the server
    randomDrink() {
      const endpoint = 'cocktail/';
      return axios.get(SERVER_URL + endpoint);
    }
 
+   //Api which make a get to the server, in the params i give the name variable
    searchDrink(name) {
       const endpoint = 'cocktails/';
-      return axios.post(SERVER_URL + endpoint + name);
+      return axios.get(SERVER_URL + endpoint + name);
     }
  }
+ 
  export default new ApiService();

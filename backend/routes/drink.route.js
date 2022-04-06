@@ -4,6 +4,7 @@ const request = require('request');
 
 const { json } = require("body-parser");
 
+//Get a random cocktail
 router.get("/cocktail", (req, res) => {
    request.get('https://thecocktaildb.com/api/json/v1/1/random.php', (err, response, body) => {
       if(!err && res.statusCode === 200){
@@ -15,16 +16,16 @@ router.get("/cocktail", (req, res) => {
    }) 
 });
 
-router.post("/cocktails/:name", (req, res, next) => {
+//Cocktails searched by name
+router.get("/cocktails/:name", (req, res, next) => {
    request.get('https://thecocktaildb.com/api/json/v1/1/search.php?s=' + req.params.name, (err, response, body) => {
       if(!err && res.statusCode === 200){
          res.json(JSON.parse(body).drinks);
-         console.log('Drinks searched by name');
+         console.log('Drinks searched by name: ' + req.params.name);
       } else {
          console.log(err);
       }
    }) 
 });
-
 
 module.exports = router;
