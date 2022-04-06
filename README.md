@@ -3,7 +3,7 @@ React és Node.js.
 
 Csomagoló: npm/yarn
 
-Szükséges komponensek: concurrently, react-script
+Szükséges modulok: concurrently, react-script
 Ha ezek nincsenek telepítve, akkor indítás előtt szintén a frontend mappán belül: 
 npm i concurrently
 npm i react-script

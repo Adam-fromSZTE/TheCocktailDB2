@@ -1,10 +1,10 @@
 # Test-DT
-React és Node.js.
+React és Node.js + TailwindCSS.
 
 Csomagoló: npm/yarn
 
-Szükséges komponensek: concurrently, react-script
-Ha ezek nincsenek telepítve, akkor indítás előtt: 
+Szükséges modulok: concurrently, react-script
+Ha ezek nincsenek telepítve, akkor indítás előtt szintén a frontend mappán belül: 
 npm i concurrently
 npm i react-script
 
