@@ -9,6 +9,7 @@ import Collapse from '@mui/material/Collapse';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { Table, TableBody, TableCell, TableRow } from '@mui/material';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -59,18 +60,23 @@ export default function CompTemp(props) {
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography paragraph>Hozzávalók:</Typography>
-          <Typography paragraph>
+          
+            <Table>
+                <TableBody>
             {Object.entries(drink)
                 .filter(x => x[0].startsWith('strIngredient') && (x[1] != null && x[1] != ""))
                     .map((ingredient, i) => {
                         return(
-                           <tr key={i}>
-                              <td>{ingredient[1] + '  ||  ' + drink['strMeasure'+(i+1)]}</td>
-                           </tr> 
+                           <TableRow key={i}>
+                              <TableCell>{ingredient[1]}</TableCell>
+                              <TableCell>{drink['strMeasure'+(i+1)]}</TableCell>
+                           </TableRow> 
                         )
                      })
                   }
-          </Typography>
+            </TableBody>
+            </Table>
+          
         </CardContent>
       </Collapse>
     </Card>

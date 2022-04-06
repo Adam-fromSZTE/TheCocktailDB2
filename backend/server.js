@@ -11,7 +11,7 @@ app.use('/api', route)
 // PORT
 const port = process.env.PORT || 4000;
 const server = app.listen(port, () => {
-  console.log('Connected to port ' + port)
+  console.log('Connected to port ' + port);
 })
   
 // 404 Error
