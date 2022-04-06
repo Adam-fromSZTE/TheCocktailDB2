@@ -17,12 +17,12 @@ const SearchDrink = () => {
          <div>
             {drinkList &&
                drinkList.forEach(drink => {
-                  <Cocktail drink={drink} />
+                  <Cocktail drink={drink}/>
                })
-         }        
+            }        
+         </div>
       </div>
-   </div>
-);
+   );
 }
  
 export default SearchDrink;

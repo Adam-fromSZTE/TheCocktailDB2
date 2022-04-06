@@ -19,15 +19,11 @@ const RandomDrink = (props) => {
    }
 
    return ( 
-      <div>
-         {randomDrink && 
-         <div className="bg-grey-200 h-auto w-auto">                       
+         randomDrink && 
+         <div className="bg-green-200">                       
             <Cocktail drink={randomDrink.drinks[0]} />
+            <button className='' onClick={() => handleClick()}>Click me</button>
          </div>
-         }
-         <button onClick={() => handleClick()}>Click me</button>
-      </div>
-
     );
 }
  

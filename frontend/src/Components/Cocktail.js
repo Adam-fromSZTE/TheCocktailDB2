@@ -1,44 +1,40 @@
 const Cocktail = (props) => {
    const drink = props.drink;
    
-   return ( 
-      <div>
-         {drink &&                         
-            <table className="inline-block mr-5">
-               <tbody className="bg-blue-200 w-auto h-auto">
-               <h2 className='mb-10'>{drink.strDrink}</h2>
-               <div>
-                  <div className='w-1/4 ml-10 m-2 float-left'>
-                  <tr>
-                     <th className="p-3">Hozzávalók</th>
-                  </tr>
-                     {Object.entries(drink)
-                        .filter(x => x[0].startsWith('strIngredient') && (x[1] != null && x[1] != ""))
-                           .map((ingredien, i) => {
-                              return(
-                                 <tr >
-                                    <td key={i} className="p-1 pr-3">{ingredien[1] + '  ||  ' + drink['strMeasure'+(i+1)]}</td>
-                                 </tr> 
-                              )
-                           })
-                        }
-               </div>
-               <div className='w-2/3 float-right'>
-                  <td className='mb-20 w-1/2 align-middle'>{drink.strInstructions}</td>
-                     <td>
-                        <img 
-                           src={drink.strDrinkThumb} 
-                           alt='drink'
-                           className='w-64 h-64 p-10 inline'
-                        />
-                     </td>
-                  </div>
-                  </div>
+   return (    
+         <div className="h-96">
+         <h2 className=''>{drink.strDrink}</h2>                      
+            <table className="w-1/3 inline-block p-20">      
+               <tbody className="bg-blue-200">
+               <tr>
+                  <th className="m-5">Hozzávalók</th>
+               </tr>
+                  {Object.entries(drink)
+                     .filter(x => x[0].startsWith('strIngredient') && (x[1] != null && x[1] != ""))
+                        .map((ingredien, i) => {
+                           return(
+                              <tr key={i}>
+                                 <td className="">{ingredien[1] + '  ||  ' + drink['strMeasure'+(i+1)]}</td>
+                              </tr> 
+                           )
+                        })
+                     }
                </tbody>
-            </table>    
-         }
-      </div>
-    );
-}
+            </table> 
+            <div className='w-2/3 h-72 float-right bg-red-200'>
+               <div className="w-1/2 float-left p-10">
+                  {drink.strInstructions}
+               </div>
+               <div className="w-1/2 float-right">
+               <img 
+                  src={drink.strDrinkThumb} 
+                  alt='drink'
+                  className="w-80 h-80 float-right mr-20"
+                  />
+               </div>   
+            </div>
+         </div>        
+      );
+                  }
  
 export default Cocktail;
