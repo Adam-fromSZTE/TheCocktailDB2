@@ -1,31 +1,40 @@
 import { useEffect, useState } from "react";
 import ApiService from "../Service/api"
-import Cocktail from "./Cocktail";
+import TextField from "@mui/material/TextField"
+import CompTemp from "./CompTemp";
+import { Button, Card, Grid, Checkbox } from "@mui/material";
 
-const SearchDrink = () => {
+
+const SearchDrink = (props) => {
    const [text, setText] = useState();
    const [drinkList, setDrinkList] = useState();
 
+   const virgin = props.virgin;
+   const setVirgin = props.setVirgin;
+
    const handleClick = async() => {
-      const res  = await ApiService.searchDrink(text);
+      const res  = await ApiService.searchDrink(text, virgin);
       setDrinkList(res.data)
    };
 
    useEffect(() => {
       console.log(drinkList)
-   },[drinkList])
+   } , [drinkList])
    
    return ( 
-      <div className="m-20 bg-slate-300">
-         <input onChange={(e) => setText(e.target.value)} type='text' placeholder="Write here the name"/>
-         <button className="bg-green-200" onClick={() => handleClick()}>Search</button>
-         <div>
+      <div className="items-center flex">
+         <Card>
+            <TextField onChange={(e) => setText(e.target.value)} id="outlined-basic" variant="filled" />
+            <Checkbox onChange={(e) => setVirgin(e.target.value)}/>
+            <Button variant="contained" onClick={() => handleClick()}>Search</Button>
+         </Card>
+         <Grid container spacing={5}>
             {drinkList &&
                drinkList.map((drink, i) => {                  
-                  return <Cocktail drink={drink} key={i}/>;             
+                  return <CompTemp drink={drink} key={i}/>;             
                })
             }        
-         </div>
+         </Grid>
       </div>
    );
 }

@@ -2,9 +2,9 @@ import axios from 'axios';
 import SERVER_URL from '../Service/serverUrl'
 
 class ApiService {
-   randomDrink() {
-     const endpoint = 'cocktail';
-     return axios.get(SERVER_URL + endpoint);
+   randomDrink(virgin) {
+     const endpoint = 'cocktail/';
+     return axios.get(SERVER_URL + endpoint + virgin);
    }
 
    searchDrink(name) {
