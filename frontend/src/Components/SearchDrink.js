@@ -7,8 +7,12 @@ const SearchDrink = () => {
    const [drinkList, setDrinkList] = useState();
 
    const handleClick = () => {
-      ApiService.searchDrink(text).then(res => setDrinkList(res.data['drinks']));
+      ApiService.searchDrink(text).then(res => setDrinkList(res.data));
    };
+
+   useEffect(() => {
+      console.log(drinkList)
+   },[drinkList])
    
    return ( 
       <div className="m-20 bg-slate-300">
@@ -16,8 +20,8 @@ const SearchDrink = () => {
          <button className="bg-green-200" onClick={() => handleClick()}>Search</button>
          <div>
             {drinkList &&
-               drinkList.forEach(drink => {
-                  <Cocktail drink={drink}/>
+               drinkList.map((drink, i) => {                  
+                  return <Cocktail drink={drink} key={i}/>;             
                })
             }        
          </div>

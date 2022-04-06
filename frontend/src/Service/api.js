@@ -9,7 +9,7 @@ class ApiService {
 
    searchDrink(name) {
       const endpoint = 'cocktails/';
-      return axios.get(SERVER_URL + endpoint + name);
+      return axios.post(SERVER_URL + endpoint + name);
     }
  }
  export default new ApiService();

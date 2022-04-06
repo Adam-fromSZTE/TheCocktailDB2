@@ -21,8 +21,8 @@ const RandomDrink = (props) => {
    return ( 
          randomDrink && 
          <div className="bg-green-200">                       
-            <Cocktail drink={randomDrink.drinks[0]} />
-            <button className='' onClick={() => handleClick()}>Click me</button>
+            <Cocktail drink={randomDrink} />
+            <button className='bg-blue-200' onClick={() => handleClick()}>Click me</button>
          </div>
     );
 }
