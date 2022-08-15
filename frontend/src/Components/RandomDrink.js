@@ -1,18 +1,17 @@
 import ApiService from '../Service/api'
 import React, { useEffect, useState } from 'react';
 import Cocktail from './Cocktail';
-import { Checkbox, Chip, FormControlLabel, FormGroup, Stack, Switch } from '@mui/material/node';
+import { FormControlLabel, Switch } from '@mui/material/node';
 
 
-const RandomDrink = (props) => { 
+const RandomDrink = () => { 
    const [randomDrink, setRandomDrink] = useState();
    const [virgin, setVirgin] = useState(false);
 
    //Need this to show a drink if I open the page
    useEffect(() => {
       handleNewRandomDrink();
-   }, []);
-
+   }, [,virgin]);
 
    //Handle button click (async)
    const handleNewRandomDrink = async() => {
@@ -33,7 +32,7 @@ const RandomDrink = (props) => {
                <FormControlLabel
                   value={virgin}
                   control={<Switch color="primary" />}
-                  label="Virgin cocktails"
+                  label="Virgin cocktail"
                   labelPlacement="start"
                   onClick={() => handleVirginSwitch()}
                />
