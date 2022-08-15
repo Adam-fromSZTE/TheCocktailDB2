@@ -1,8 +1,8 @@
 import { useState } from "react";
 import ApiService from "../Service/api"
 import TextField from "@mui/material/TextField"
-import CompTemp from "./Cocktail";
-import { Button, Card, Grid } from "@mui/material";
+import { Card, Grid } from "@mui/material";
+import Cocktail from "./Cocktail";
 
 
 const SearchDrink = (props) => {
@@ -21,14 +21,17 @@ const SearchDrink = (props) => {
          <div className="mb-20">
             <Card>
                <TextField onChange={(e) => setText(e.target.value)} id="outlined-basic" variant="filled" />
-               <Button variant="contained" onClick={() => handleClick()}>Search</Button>
+               <button 
+               className="bg-neutral-300 w-auto p-2 my-2 mx-2 rounded-full transition duration-700 hover:bg-neutral-500 hover:scale-110" 
+               onClick={() => handleClick()}>Search
+               </button>
             </Card>
          </div>
-         <div className="m-auto">
+         <div className="m-10">
             <Grid style={{justifyContent: "center"}} container gap={2} spacing={1}>
                {drinkList &&
                   drinkList.map((drink, i) => {                  
-                     return <CompTemp drink={drink} key={i}/>;             
+                     return <Cocktail drink={drink} key={i}/>;             
                   })
                }        
             </Grid>

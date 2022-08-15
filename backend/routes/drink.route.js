@@ -5,11 +5,11 @@ const request = require('request');
 const { json } = require("body-parser");
 
 //Get a random cocktail
-router.get("/cocktail", (req, res) => {
+router.get("/cocktail/:virgin", (req, res, next) => {
    request.get('https://thecocktaildb.com/api/json/v1/1/random.php', (err, response, body) => {
       if(!err && res.statusCode === 200){
          res.json(JSON.parse(body).drinks[0]);
-         console.log('Random drink sent to the frontend');
+         console.log('Random drink sent to the frontend, virgin: ' + req.params.virgin);
       } else {
          console.log(err);
       }

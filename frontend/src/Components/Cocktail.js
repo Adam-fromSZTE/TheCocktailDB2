@@ -24,7 +24,7 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export default function CompTemp(props) {
+export default function Cocktail(props) {
     const [expanded, setExpanded] = React.useState(false);
     const drink = props.drink;
 
@@ -33,7 +33,7 @@ export default function CompTemp(props) {
   };
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345, margin: 'auto' }}>
       <CardHeader
         title={drink.strDrink}
         subheader={drink.strAlcoholic}
@@ -62,11 +62,10 @@ export default function CompTemp(props) {
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography paragraph>Ingrediens:</Typography>
-          
             <Table>
-                <TableBody>
+              <TableBody>
             {Object.entries(drink)
-                .filter(x => x[0].startsWith('strIngredient') && (x[1] != null && x[1] != ""))
+                .filter(x => x[0].startsWith('strIngredient') && (x[1] !== null && x[1] !== ""))
                     .map((ingredient, i) => {
                         return(
                            <TableRow key={i}>
@@ -77,8 +76,7 @@ export default function CompTemp(props) {
                      })
                   }
             </TableBody>
-            </Table>
-          
+          </Table>   
         </CardContent>
       </Collapse>
     </Card>
