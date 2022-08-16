@@ -34,7 +34,8 @@ export default function Cocktail(props) {
 
   return (
     <Card sx={{ maxWidth: 345, margin: 'auto' }}>
-      <CardHeader
+      <CardHeader 
+        className='text-left'
         title={drink.strDrink}
         subheader={drink.strAlcoholic}
       />

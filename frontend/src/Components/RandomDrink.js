@@ -1,49 +1,57 @@
-import ApiService from '../Service/api'
-import React, { useEffect, useState } from 'react';
-import Cocktail from './Cocktail';
-import { FormControlLabel, Switch } from '@mui/material/node';
+import ApiService from "../Service/api";
+import React, { useEffect, useState } from "react";
+import Cocktail from "./Cocktail";
+import { FormControlLabel, Switch } from "@mui/material";
+import { CircleSpinner } from "react-spinners-kit";
 
+const RandomDrink = () => {
+  const [randomDrink, setRandomDrink] = useState();
+  const [virgin, setVirgin] = useState(false);
+  const [haveRandomDrink, setHaveRandomDrink] = useState(false);
 
-const RandomDrink = () => { 
-   const [randomDrink, setRandomDrink] = useState();
-   const [virgin, setVirgin] = useState(false);
+  //Need this to show a drink if I open the page
+  useEffect(() => {
+    handleNewRandomDrink();
+  }, [virgin]);
 
-   //Need this to show a drink if I open the page
-   useEffect(() => {
-      handleNewRandomDrink();
-   }, [,virgin]);
+  useEffect(() => {
+    setHaveRandomDrink(true);
+  }, [randomDrink]);
 
-   //Handle button click (async)
-   const handleNewRandomDrink = async() => {
-      const res = await ApiService.randomDrink(virgin);
-      setRandomDrink(res.data);
-   }
+  const handleVirginSwitch = async () => {
+    setVirgin(!virgin);
+  };
 
+  //Handle button click (async)
+  const handleNewRandomDrink = async () => {
+    setHaveRandomDrink(false);
 
-   const handleVirginSwitch = async() => {
-      setVirgin(!virgin)
-   }
+    const res = await ApiService.randomDrink(virgin);
+    setRandomDrink(res.data);
+  };
 
-   //I give in props a drink to the Cocktail component
-   return ( 
-         randomDrink && 
-         <div className='bg-gray-400 bg-blend-lighten'>
-            <div>
-               <FormControlLabel
-                  value={virgin}
-                  control={<Switch color="primary" />}
-                  label="Virgin cocktail"
-                  labelPlacement="start"
-                  onClick={() => handleVirginSwitch()}
-               />
-            </div>
-            <Cocktail drink={randomDrink}/>
-            <button 
-            className='bg-neutral-300 w-auto p-2 my-2 rounded-full transition duration-700 hover:bg-neutral-500 hover:scale-110' 
-            onClick={() => handleNewRandomDrink()}>Give new random
-            </button>    
-         </div>
-    );
-}
- 
+  //I give in props a drink to the Cocktail component
+  return (
+    randomDrink && (
+      <div className="bg-gray-400">
+        {haveRandomDrink ? <Cocktail drink={randomDrink} /> : <CircleSpinner className="m-auto" />}
+        <button
+          className="bg-neutral-300 w-auto p-2 my-2 rounded-full transition duration-700 hover:bg-neutral-500 hover:scale-110"
+          onClick={() => handleNewRandomDrink()}
+        >
+          Give new random
+        </button>
+        <FormControlLabel
+          className="pl-4"
+          value={virgin}
+          control={<Switch color="primary" />}
+          label="Virgin cocktail"
+          labelPlacement="end"
+          onClick={() => handleVirginSwitch()}
+        />
+      </div>
+    )
+  );
+};
+
 export default RandomDrink;
