@@ -20,7 +20,7 @@ const SearchDrink = () => {
   const [dropdown, setDropdown] = useState([]);
 
   //Handle button click (async)
-  const handleClick = async () => {
+  const handleNameSearch = async () => {
     setHaveDrinkList(false);
 
     const res = await ApiService.searchDrink(text);
@@ -46,11 +46,12 @@ const SearchDrink = () => {
             <Select options={options} onChange={(e) => handleDropdownChoose(e.value)}/>
           </div>
           <div className="w-52 m-2">
-            <Select options={dropdown} defaultValue={dropdown[0]} />
+            <Select options={dropdown} defaultValue={dropdown[0]}/>
           </div>
           <button
             className="bg-neutral-300 w-auto p-2 my-2 mx-2 rounded-full transition duration-700 hover:bg-neutral-500 hover:scale-110"
-            onClick={() => handleClick()}>
+            >
+            Search
           </button>
         </div>
         <div className="m-auto flex">
@@ -61,13 +62,13 @@ const SearchDrink = () => {
             placeholder="Search by name"
             onKeyDown={(e) => {
               if (e.key == "Enter") {
-                handleClick();
+                handleNameSearch();
               }
             }}
           />
           <button
             className="bg-neutral-300 w-auto p-2 my-2 mx-2 rounded-full transition duration-700 hover:bg-neutral-500 hover:scale-110"
-            onClick={() => handleClick()}
+            onClick={() => handleNameSearch()}
           >
             Search
           </button>
