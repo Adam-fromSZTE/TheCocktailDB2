@@ -1,4 +1,4 @@
-# Test-DT
+# TheCocktailDB2
 React és Node.js.
 
 Csomagoló: npm/yarn
