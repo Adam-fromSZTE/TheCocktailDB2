@@ -4,12 +4,10 @@ React és Node.js.
 Csomagoló: npm/yarn
 
 Szükséges modulok: concurrently, react-script
-Ha ezek nincsenek telepítve, akkor indítás előtt szintén a frontend mappán belül: 
-npm i concurrently
-npm i react-script
 
-Indítás:
-Frontend mappán belül: yarn/npm start
+Indítás előtt: npm install
+
+Majd backend és frontend mappán belül is npm start
 
 http://localhost:3000/cocktail
  
