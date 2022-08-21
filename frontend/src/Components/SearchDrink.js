@@ -18,6 +18,8 @@ const SearchDrink = () => {
   const [drinkList, setDrinkList] = useState();
   const [haveDrinkList, setHaveDrinkList] = useState(false);
   const [dropdown, setDropdown] = useState([]);
+  const [dropdownOption, setDropdownOption] = useState({});
+  const [dropdownValue, setDropdownValue] = useState({});
 
   //Handle button click (async)
   const handleNameSearch = async () => {
@@ -27,9 +29,23 @@ const SearchDrink = () => {
     setDrinkList(res.data);
   };
 
-  const handleDropdownChoose = async (value) => {
+  //Handle button click (async)
+  const handleDropdownSearch = async () => {
+    
+    setHaveDrinkList(false);
 
-    const res = await ApiService.searchDropdown(value);
+    const res = await ApiService.searchDropdown({
+      option: dropdownOption.value,
+      value: dropdownValue.value,
+    });
+
+    setDrinkList(res.data);
+  };
+
+  const handleDropdownChoose = async (value) => {
+    
+    const res = await ApiService.chooseDropdown(value);
+
     setDropdown(res.data);
   };
 
@@ -37,24 +53,42 @@ const SearchDrink = () => {
     setHaveDrinkList(true);
   }, [drinkList]);
 
+  useEffect(() => {
+    setDropdownValue(dropdown[0]);
+  }, [dropdown]);
+
   //I give in props a drink to the Cocktail component
   return (
     <Card>
       <div className="m-10 p-5 rounded-lg bg-gray-200 flex">
-        <div className="m-auto flex">
+        <div className="m-auto w-auto flex">
           <div className="w-52 m-2">
-            <Select options={options} onChange={(e) => handleDropdownChoose(e.value)}/>
+            <Select
+              options={options}
+              value={dropdownOption}
+              onChange={(e) => {
+                handleDropdownChoose(e.value);
+                setDropdownOption(e);
+              }}
+            />
           </div>
           <div className="w-52 m-2">
-            <Select options={dropdown} defaultValue={dropdown[0]}/>
+            <Select
+              options={dropdown}
+              value={dropdownValue}
+              onChange={(e) => {
+                setDropdownValue(e);
+              }}
+            />
           </div>
           <button
             className="bg-neutral-300 w-auto p-2 my-2 mx-2 rounded-full transition duration-700 hover:bg-neutral-500 hover:scale-110"
-            >
+            onClick={() => handleDropdownSearch()}
+          >
             Search
           </button>
         </div>
-        <div className="m-auto flex">
+        <div className="m-auto w-auto flex">
           <TextField
             onChange={(e) => setText(e.target.value)}
             id="outlined-basic"

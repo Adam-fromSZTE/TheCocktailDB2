@@ -1,12 +1,19 @@
 const express = require('express');
 const cors = require('cors');
+const bodyParser = require('body-parser');
 
 // Express route
 const route = require('../backend/routes/drink.route');
   
 const app = express();
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+
 app.use(cors());
-app.use('/api', route)
+app.use('/api', route);
   
 // PORT
 const port = process.env.PORT || 4000;
