@@ -33,7 +33,7 @@ const RandomDrink = () => {
   //I give in props a drink to the Cocktail component
   return (
     randomDrink && (
-      <div className="bg-gray-400 mx-10 p-2 rounded-lg">
+      <div className="bg-gray-400 m-10 p-2 rounded-lg">
         {haveRandomDrink ? <Cocktail drink={randomDrink} /> : <CircleSpinner className="m-auto" />}
         <button
           className="bg-neutral-300 w-auto p-2 my-2 rounded-full transition duration-700 hover:bg-neutral-500 hover:scale-110"

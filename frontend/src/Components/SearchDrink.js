@@ -60,9 +60,9 @@ const SearchDrink = () => {
   //I give in props a drink to the Cocktail component
   return (
     <Card>
-      <div className="m-10 p-5 rounded-lg bg-gray-200 flex">
-        <div className="m-auto w-auto flex">
-          <div className="w-52 m-2">
+      <div className="mx-10 p-5 rounded-lg bg-gray-200 lg:flex md:table md:m-auto">
+        <div className="m-auto w-auto lg:flex md:table">
+          <div className="w-60 m-2">
             <Select
               options={options}
               value={dropdownOption}
@@ -72,7 +72,7 @@ const SearchDrink = () => {
               }}
             />
           </div>
-          <div className="w-52 m-2">
+          <div className="w-60 m-2">
             <Select
               options={dropdown}
               value={dropdownValue}
@@ -82,13 +82,18 @@ const SearchDrink = () => {
             />
           </div>
           <button
-            className="bg-neutral-300 w-auto p-2 my-2 mx-2 rounded-full transition duration-700 hover:bg-neutral-500 hover:scale-110"
+            className="bg-neutral-300 w-auto p-2 m-2 rounded-full transition duration-700 hover:bg-neutral-500 hover:scale-110"
             onClick={() => handleDropdownSearch()}
+            onKeyDown={(e) => {
+              if (e.key == "Enter") {
+                handleDropdownSearch();
+              }
+            }}
           >
             Search
           </button>
         </div>
-        <div className="m-auto w-auto flex">
+        <div className="m-auto w-auto lg:flex md:table">
           <TextField
             onChange={(e) => setText(e.target.value)}
             id="outlined-basic"
@@ -101,7 +106,7 @@ const SearchDrink = () => {
             }}
           />
           <button
-            className="bg-neutral-300 w-auto p-2 my-2 mx-2 rounded-full transition duration-700 hover:bg-neutral-500 hover:scale-110"
+            className="bg-neutral-300 w-auto p-2 m-2 rounded-full transition duration-700 hover:bg-neutral-500 hover:scale-110 md:block md:mx-auto md:my-2"
             onClick={() => handleNameSearch()}
           >
             Search
