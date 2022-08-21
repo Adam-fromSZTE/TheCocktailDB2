@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const axios = require('axios');
+const fetch = require('node-fetch');
 
 
 //Get a random cocktail
@@ -65,8 +66,9 @@ router.post("/cocktails/search/dropdown", async (req, res, next) => {
 
    const drinks = await Promise.all(
       drinkIds.map(async drinkId => {
-         return axios.get("https://thecocktaildb.com/api/json/v1/1/lookup.php?i=" + drinkId)
-            .then(res => res.data.drinks[0])
+         return fetch("https://thecocktaildb.com/api/json/v1/1/lookup.php?i=" + drinkId)
+            .then(res => res.json())
+            .then(res => res.drinks[0])
             .catch(err => console.log(err));   
       })
    )
