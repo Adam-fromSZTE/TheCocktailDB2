@@ -1,5 +1,5 @@
 # TheCocktailDB2
-React és Node.js.
+React és Node.js ( + Tailwind CSS).
 
 Csomagoló: npm/yarn
 
